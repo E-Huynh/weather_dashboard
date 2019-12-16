@@ -25,10 +25,10 @@ $("#submitBtn").on("click", function(event){
 
 //Constructor function
 function CurrentWeatherDisplay(obj){
-    //Removes any existing .current
-    $(".current").remove();
-    //Creates div.current
-    var main = $(`<div class="current">`);
+    //Removes any existing #current
+    $("#current").remove();
+    //Creates div#current
+    var main = $(`<div id="current">`);
     //Cycles through obj passed in as function
     for (const key in obj) {
         //Creates new <p> with obj key and value
