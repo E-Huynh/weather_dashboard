@@ -15,7 +15,7 @@ function getCurrentWeather(location){
       }
       new CurrentWeatherDisplay(currentWeather);
   });
-}
+};
 
 $("#submitBtn").on("click", function(event){
     event.preventDefault();
@@ -37,4 +37,4 @@ function CurrentWeatherDisplay(obj){
         main.append(k)
     }
     $("#mainDisplay").append(main);
-}
+};
