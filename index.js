@@ -90,11 +90,13 @@ function getFiveDayWeather(location){
         }
     }
 
-    console.log('Day 1', d1maxTemp, d1humidity);
-    console.log('Day 2', d2maxTemp, d2humidity);
-    console.log('Day 3', d3maxTemp, d3humidity);
-    console.log('Day 4', d4maxTemp, d4humidity);
-    console.log('Day 5', d5maxTemp, d5humidity);
+    var forcast = $(`<div class="forcast">
+        <p>Date</p>
+        <p>img</p>
+        <p>${d1maxTemp}</p>
+        <p>${d1humidity}</p>
+    </div>`);
+    $("#forcastDisplay").append(forcast);
   });
 };
 
