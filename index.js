@@ -4,6 +4,16 @@ var day2 = moment().add(2, 'day').format('YYYY-MM-DD');
 var day3 = moment().add(3, 'day').format('YYYY-MM-DD');
 var day4 = moment().add(4, 'day').format('YYYY-MM-DD');
 var day5 = moment().add(5, 'day').format('YYYY-MM-DD');
+var d1maxTemp = 0;
+var d2maxTemp = 0;
+var d3maxTemp = 0;
+var d4maxTemp = 0;
+var d5maxTemp = 0;
+var d1humidity = 0;
+var d2humidity = 0;
+var d3humidity = 0;
+var d4humidity = 0;
+var d5humidity = 0;
 
 var m = moment()
 var d1Values = [];
@@ -44,48 +54,47 @@ function getFiveDayWeather(location){
         var APIday = response.list[i].dt_txt.substr(0,10)
 
         if(day1=== APIday){
-            var newTemps = {
-                high: response.list[i].main.temp, 
-                humidity: response.list[i].main.humidity
-            };
-            d1Values.push(newTemps);
+            var checkedTemp = response.list[i].main.temp;
+            if(checkedTemp > d1maxTemp){
+                d1maxTemp = checkedTemp
+                d1humidity = response.list[i].main.humidity;
+            }    
         }
         else if(day2=== APIday){
-            var newTemps = {
-                high: response.list[i].main.temp, 
-                humidity: response.list[i].main.humidity
-            };
-            d2Values.push(newTemps);
+            var checkedTemp = response.list[i].main.temp;
+            if(checkedTemp > d2maxTemp){
+                d2maxTemp = checkedTemp
+                d2humidity = response.list[i].main.humidity;
+            }   
         }
         else if(day3=== APIday){
-            var newTemps = {
-                high: response.list[i].main.temp, 
-                humidity: response.list[i].main.humidity
-            };
-            d3Values.push(newTemps);
+            var checkedTemp = response.list[i].main.temp;
+            if(checkedTemp > d3maxTemp){
+                d3maxTemp = checkedTemp
+                d3humidity = response.list[i].main.humidity;
+            }   
         }
         else if(day4=== APIday){
-            var newTemps = {
-                high: response.list[i].main.temp, 
-                humidity: response.list[i].main.humidity
-            };
-            d4Values.push(newTemps);
+            var checkedTemp = response.list[i].main.temp;
+            if(checkedTemp > d4maxTemp){
+                d4maxTemp = checkedTemp
+                d4humidity = response.list[i].main.humidity;
+            }   
         }
         else if(day5=== APIday){
-            var newTemps = {
-                high: response.list[i].main.temp, 
-                humidity: response.list[i].main.humidity
-            };
-            d5Values.push(newTemps);
+            var checkedTemp = response.list[i].main.temp;
+            if(checkedTemp > d5maxTemp){
+                d5maxTemp = checkedTemp
+                d5humidity = response.list[i].main.humidity;
+            }   
         }
     }
 
-    console.log(d1Values);
-    console.log(d2Values);
-    console.log(d3Values);
-    console.log(d4Values);
-    console.log(d5Values);
-
+    console.log('Day 1', d1maxTemp, d1humidity);
+    console.log('Day 2', d2maxTemp, d2humidity);
+    console.log('Day 3', d3maxTemp, d3humidity);
+    console.log('Day 4', d4maxTemp, d4humidity);
+    console.log('Day 5', d5maxTemp, d5humidity);
   });
 };
 
