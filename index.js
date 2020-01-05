@@ -114,6 +114,8 @@ $("#submitBtn").on("click", function(event){
     var cityStr = city.replace(/\ /g, '+');
     getCurrentWeather(cityStr);
     getFiveDayWeather(cityStr);
+    var history = $(`<button class="history" data-cityName="${city}">${city}</button><br>`);
+    $("#historyList").append(history);
 });
 
 //Constructor function
