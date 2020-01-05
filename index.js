@@ -19,11 +19,17 @@ var d5humidity = 0;
 var tempArray = [];
 var humidityArray = [];
 
+(function init(){
+    var cityStr = localStorage.getItem("lastCity");
+    getCurrentWeather(cityStr);
+    getFiveDayWeather(cityStr);
+})();
+
 
 function getCurrentWeather(location){
     $.ajax({
         //Change this back to dynamic at the end
-    url: `http://api.openweathermap.org/data/2.5/weather?q=Salt+Lake+City&mode=JSON&units=imperial&APPID=9c5c1b3cee6e10229e2b0a0786d075e1`,
+    url: `http://api.openweathermap.org/data/2.5/weather?q=${location}&mode=JSON&units=imperial&APPID=9c5c1b3cee6e10229e2b0a0786d075e1`,
     method: "GET"
   }).then(function(response) {
       //set API data to an object
@@ -42,7 +48,7 @@ function getCurrentWeather(location){
 function getFiveDayWeather(location){
     $.ajax({
         //Change this back to dynamic at the end
-    url: `http://api.openweathermap.org/data/2.5/forecast?q=Salt+Lake+City&mode=JSON&units=imperial&appid=9c5c1b3cee6e10229e2b0a0786d075e1`,
+    url: `http://api.openweathermap.org/data/2.5/forecast?q=${location}&mode=JSON&units=imperial&appid=9c5c1b3cee6e10229e2b0a0786d075e1`,
     method: "GET"
   }).then(function(response) {
     //set API data to an object
@@ -115,6 +121,7 @@ $("#submitBtn").on("click", function(event){
     getFiveDayWeather(cityStr);
     var history = $(`<button class="history" data-cityname="${city}">${city}</button><br>`);
     $("#historyList").append(history);
+    localStorage.setItem("lastCity", cityStr);
 });
 
 $("#historyList").on("click", "button", function(event){
@@ -124,6 +131,7 @@ $("#historyList").on("click", "button", function(event){
     var cityStr = city.replace(/\ /g, '+');
     getCurrentWeather(cityStr);
     getFiveDayWeather(cityStr);
+    localStorage.setItem("lastCity", cityStr);
 });
 
 //Constructor function
