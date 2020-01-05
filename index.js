@@ -114,8 +114,20 @@ $("#submitBtn").on("click", function(event){
     var cityStr = city.replace(/\ /g, '+');
     getCurrentWeather(cityStr);
     getFiveDayWeather(cityStr);
-    var history = $(`<button class="history" data-cityName="${city}">${city}</button><br>`);
+    var history = $(`<button class="history" data-cityname="${city}">${city}</button><br>`);
     $("#historyList").append(history);
+});
+
+$("#historyList").on("click", "button", function(event){
+    event.preventDefault();
+    $("#forcastDisplay").empty();
+    $("#mainDisplay").empty();
+    tempArray = [];
+    humidityArray = [];
+    var city = this.dataset.cityname;
+    var cityStr = city.replace(/\ /g, '+');
+    getCurrentWeather(cityStr);
+    getFiveDayWeather(cityStr);
 });
 
 //Constructor function
