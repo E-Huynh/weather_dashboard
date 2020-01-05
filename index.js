@@ -104,12 +104,11 @@ function getFiveDayWeather(location){
   });
 };
 
+
+
 $("#submitBtn").on("click", function(event){
     event.preventDefault();
-    $("#forcastDisplay").empty();
-    $("#mainDisplay").empty();
-    tempArray = [];
-    humidityArray = [];
+    clearDisplayAndArrays();
     var city = $("#location").val();
     var cityStr = city.replace(/\ /g, '+');
     getCurrentWeather(cityStr);
@@ -120,10 +119,7 @@ $("#submitBtn").on("click", function(event){
 
 $("#historyList").on("click", "button", function(event){
     event.preventDefault();
-    $("#forcastDisplay").empty();
-    $("#mainDisplay").empty();
-    tempArray = [];
-    humidityArray = [];
+    clearDisplayAndArrays();
     var city = this.dataset.cityname;
     var cityStr = city.replace(/\ /g, '+');
     getCurrentWeather(cityStr);
@@ -144,3 +140,10 @@ function CurrentWeatherDisplay(obj){
     }
     $("#mainDisplay").append(main);
 };
+
+function clearDisplayAndArrays(){
+    $("#forcastDisplay").empty();
+    $("#mainDisplay").empty();
+    tempArray = [];
+    humidityArray = [];
+}
