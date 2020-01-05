@@ -11,9 +11,13 @@ var d1description, d2description, d3description, d4description, d5description;
 var tempArray = [];
 var humidityArray = [];
 var descriptionArray = [];
+var historyArray = [];
 
 (function init(){
     var cityStr = localStorage.getItem("lastCity");
+    if(localStorage.getItem("historyArray")){
+        historyArray = (localStorage.getItem("historyArray"));
+    }
     getCurrentWeather(cityStr);
     getFiveDayWeather(cityStr);
 })();
@@ -27,6 +31,9 @@ $("#submitBtn").on("click", function(event){
     getFiveDayWeather(cityStr);
     var history = $(`<button class="history" data-cityname="${city}">${city}</button><br>`);
     $("#historyList").append(history);
+    historyArray.push(city);
+    console.log(historyArray);
+    localStorage.setItem("historyArray", historyArray);
     localStorage.setItem("lastCity", cityStr);
 });
 
