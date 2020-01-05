@@ -1,5 +1,52 @@
 *{
     padding:0;
     margin: 0;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.cityList{
+    width: 20%;
+    background: rgb(216, 214, 214);
+}
+
+#displayContainer{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+#mainDisplay{
+    margin: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#mainDisplay p{
+    margin: 10px;
+}
+
+#forcastDisplay{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forcast{
+    margin: 10px;
+    padding: 10px;
+    width: 20%;
+    background-color: rgb(33, 33, 253);
+    color: white;
+    border-radius: 5px;
+}
+
+.forcast div {
+    margin: 10px;
+}
+

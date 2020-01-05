@@ -94,10 +94,10 @@ function getFiveDayWeather(location){
     console.log(humidityArray);
     for( i=0; i<tempArray.length; i++){
         var forcast = $(`<div class="forcast">
-            <p>${fiveDayArray[i]}</p>
-            <p>img</p>
-            <p>${tempArray[i]}</p>
-            <p>${humidityArray[i]}</p>
+            <div>${fiveDayArray[i]}</div>
+            <div>img</div>
+            <div>High: ${tempArray[i]}°F</div>
+            <div>Humidity: ${humidityArray[i]}%</div>
         </div>`);
         $("#forcastDisplay").append(forcast);
     }
