@@ -48,45 +48,46 @@ function getFiveDayWeather(location){
     //set API data to an object
     console.log(response);
 
-    for( i = 0; i < response.list.length; i++){
+    response.list.forEach( function(e, i){
         var APIday = response.list[i].dt_txt.substr(0,10)
 
-        if(day1=== APIday){
+
+        if(day1 === APIday){
             var checkedTemp = response.list[i].main.temp;
             if(checkedTemp > d1maxTemp){
                 d1maxTemp = checkedTemp
                 d1humidity = response.list[i].main.humidity;
-            }    
+            } 
         }
-        else if(day2=== APIday){
+        else if(day2 === APIday){
             var checkedTemp = response.list[i].main.temp;
             if(checkedTemp > d2maxTemp){
                 d2maxTemp = checkedTemp
                 d2humidity = response.list[i].main.humidity;
             }   
         }
-        else if(day3=== APIday){
+        else if(day3 === APIday){
             var checkedTemp = response.list[i].main.temp;
             if(checkedTemp > d3maxTemp){
                 d3maxTemp = checkedTemp
                 d3humidity = response.list[i].main.humidity;
             }   
         }
-        else if(day4=== APIday){
+        else if(day4 === APIday){
             var checkedTemp = response.list[i].main.temp;
             if(checkedTemp > d4maxTemp){
                 d4maxTemp = checkedTemp
                 d4humidity = response.list[i].main.humidity;
             }   
         }
-        else if(day5=== APIday){
+        else if(day5 === APIday){
             var checkedTemp = response.list[i].main.temp;
             if(checkedTemp > d5maxTemp){
                 d5maxTemp = checkedTemp
                 d5humidity = response.list[i].main.humidity;
             }   
         }
-    }
+    })
     tempArray.push(d1maxTemp, d2maxTemp, d3maxTemp, d4maxTemp, d5maxTemp);
     humidityArray.push(d1humidity, d2humidity, d3humidity, d4humidity, d5humidity);
     console.log(tempArray);
