@@ -5,21 +5,9 @@ var day3 = moment().add(3, 'day').format('YYYY-MM-DD');
 var day4 = moment().add(4, 'day').format('YYYY-MM-DD');
 var day5 = moment().add(5, 'day').format('YYYY-MM-DD');
 var fiveDayArray = [day1, day2, day3, day4, day5];
-var d1maxTemp = 0;
-var d2maxTemp = 0;
-var d3maxTemp = 0;
-var d4maxTemp = 0;
-var d5maxTemp = 0;
-var d1humidity = 0;
-var d2humidity = 0;
-var d3humidity = 0;
-var d4humidity = 0;
-var d5humidity = 0;
-var d1description = "";
-var d2description = "";
-var d3description = "";
-var d4description = "";
-var d5description = "";
+var d1maxTemp, d2maxTemp, d3maxTemp, d4maxTemp, d5maxTemp;
+var d1humidity, d2humidity, d3humidity, d4humidity, d5humidity;
+var d1description, d2description, d3description, d4description, d5description;
 
 var tempArray = [];
 var humidityArray = [];
@@ -68,7 +56,7 @@ function getCurrentWeather(location){
         City: response.name,
         Temperature: response.main.temp,
         Description: image,
-        High: response.main.temp_max,
+        High: response.main.temp_max +"F",
         Low: response.main.temp_min,
         Humidity: response.main.humidity,
       }
@@ -91,7 +79,7 @@ function getFiveDayWeather(location){
 
         if(day1 === APIday){
             var checkedTemp = response.list[i].main.temp;
-            if(checkedTemp > d1maxTemp){
+            if(checkedTemp > d1maxTemp || undefined === d1maxTemp){
                 d1maxTemp = checkedTemp
                 d1humidity = response.list[i].main.humidity;
                 d1description = response.list[i].weather[0].main;
@@ -99,7 +87,7 @@ function getFiveDayWeather(location){
         }
         else if(day2 === APIday){
             var checkedTemp = response.list[i].main.temp;
-            if(checkedTemp > d2maxTemp){
+            if(checkedTemp > d2maxTemp || undefined === d2maxTemp){
                 d2maxTemp = checkedTemp
                 d2humidity = response.list[i].main.humidity;
                 d2description = response.list[i].weather[0].main;
@@ -107,7 +95,7 @@ function getFiveDayWeather(location){
         }
         else if(day3 === APIday){
             var checkedTemp = response.list[i].main.temp;
-            if(checkedTemp > d3maxTemp){
+            if(checkedTemp > d3maxTemp || undefined === d3maxTemp){
                 d3maxTemp = checkedTemp
                 d3humidity = response.list[i].main.humidity;
                 d3description = response.list[i].weather[0].main;
@@ -115,7 +103,7 @@ function getFiveDayWeather(location){
         }
         else if(day4 === APIday){
             var checkedTemp = response.list[i].main.temp;
-            if(checkedTemp > d4maxTemp){
+            if(checkedTemp > d4maxTemp || undefined === d4maxTemp){
                 d4maxTemp = checkedTemp
                 d4humidity = response.list[i].main.humidity;
                 d4description = response.list[i].weather[0].main;
@@ -123,7 +111,7 @@ function getFiveDayWeather(location){
         }
         else if(day5 === APIday){
             var checkedTemp = response.list[i].main.temp;
-            if(checkedTemp > d5maxTemp){
+            if(checkedTemp > d5maxTemp || undefined === d5maxTemp){
                 d5maxTemp = checkedTemp
                 d5humidity = response.list[i].main.humidity;
                 d5description = response.list[i].weather[0].main;
@@ -155,6 +143,7 @@ function CurrentWeatherDisplay(obj){
     $("#current").remove();
     //Creates div#current
     var main = $(`<div id="current">`);
+    main.append(`<p>${currentDay}</p>`);
     //Cycles through obj passed in as function
     for (const key in obj) {
         //Creates new <p> with obj key and value
@@ -186,6 +175,6 @@ function getWeatherImage(i){
         return `<i class="far fa-snowflake"></i>`;
     }
     else {
-        return '<i class="fas fa-poo-storm"></i>';
+        return 'Error No Image Displayed';
     }
 };
