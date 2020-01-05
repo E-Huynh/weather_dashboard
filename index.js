@@ -60,10 +60,14 @@ function getCurrentWeather(location){
     method: "GET"
   }).then(function(response) {
       //set API data to an object
+      console.log(response);
+      console.log(response.weather[0].main);
+      var image = getWeatherImage(response.weather[0].main);
+      console.log(image);
       var currentWeather = {
         City: response.name,
         Temperature: response.main.temp,
-        Description: response.weather[0].main,
+        Description: image,
         High: response.main.temp_max,
         Low: response.main.temp_min,
         Humidity: response.main.humidity,
@@ -79,7 +83,7 @@ function getFiveDayWeather(location){
     method: "GET"
   }).then(function(response) {
     //set API data to an object
-    console.log(response);
+    // console.log(response);
 
     response.list.forEach( function(e, i){
         var APIday = response.list[i].dt_txt.substr(0,10)
@@ -169,19 +173,19 @@ function clearDisplayAndArrays(){
 }
 
 function getWeatherImage(i){
-    if(descriptionArray[i] === "Clouds"){
+    if((descriptionArray[i] || i) === "Clouds"){
         return `<i class="fas fa-cloud-sun"></i>`;
     }
-    else if(descriptionArray[i] === "Clear"){
+    else if((descriptionArray[i] || i) === "Clear"){
         return `<i class="fas fa-sun"></i>`;
     }
-    else if(descriptionArray[i] === "Rain"){
+    else if((descriptionArray[i] || i) === "Rain"){
         return `<i class="fas fa-cloud-rain"></i>`;
     }
-    else if(descriptionArray[i] === "Snow"){
+    else if((descriptionArray[i] || i) === "Snow"){
         return `<i class="far fa-snowflake"></i>`;
     }
     else {
-        return "No img displayed";
+        return '<i class="fas fa-poo-storm"></i>';
     }
 };
