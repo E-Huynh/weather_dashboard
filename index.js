@@ -16,11 +16,9 @@ var d4humidity = 0;
 var d5humidity = 0;
 
 var m = moment()
-var d1Values = [];
-var d2Values = [];
-var d3Values = [];
-var d4Values = [];
-var d5Values = [];
+var tempArray = [];
+var humidityArray = [];
+
 
 function getCurrentWeather(location){
     $.ajax({
@@ -89,14 +87,20 @@ function getFiveDayWeather(location){
             }   
         }
     }
-
-    var forcast = $(`<div class="forcast">
-        <p>Date</p>
-        <p>img</p>
-        <p>${d1maxTemp}</p>
-        <p>${d1humidity}</p>
-    </div>`);
-    $("#forcastDisplay").append(forcast);
+    tempArray.push(d1maxTemp, d2maxTemp, d3maxTemp, d4maxTemp, d5maxTemp);
+    humidityArray.push(d1humidity, d2humidity, d3humidity, d4humidity, d5humidity);
+    console.log(tempArray);
+    console.log(humidityArray);
+    for( i=0; i<tempArray.length; i++){
+        var forcast = $(`<div class="forcast">
+            <p>Date</p>
+            <p>img</p>
+            <p>${tempArray[i]}</p>
+            <p>${humidityArray[i]}</p>
+        </div>`);
+        $("#forcastDisplay").append(forcast);
+    }
+    
   });
 };
 
