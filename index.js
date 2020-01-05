@@ -11,12 +11,22 @@ var d1description, d2description, d3description, d4description, d5description;
 var tempArray = [];
 var humidityArray = [];
 var descriptionArray = [];
-var historyArray = [];
+var historyObject = {
+    historyArray: [],
+};
+
+function populateHistory(){
+    for( var i = 0; i < historyObject.historyArray.length; i++){
+        var history = $(`<button class="history" data-cityname="${historyObject.historyArray[i]}">${historyObject.historyArray[i]}</button><br>`);
+        $("#historyList").append(history);
+    }
+};
 
 (function init(){
     var cityStr = localStorage.getItem("lastCity");
-    if(localStorage.getItem("historyArray")){
-        historyArray = (localStorage.getItem("historyArray"));
+    if(localStorage.getItem("historyObject")){
+        historyObject = (JSON.parse(localStorage.getItem("historyObject")));
+        populateHistory();
     }
     getCurrentWeather(cityStr);
     getFiveDayWeather(cityStr);
@@ -31,9 +41,9 @@ $("#submitBtn").on("click", function(event){
     getFiveDayWeather(cityStr);
     var history = $(`<button class="history" data-cityname="${city}">${city}</button><br>`);
     $("#historyList").append(history);
-    historyArray.push(city);
-    console.log(historyArray);
-    localStorage.setItem("historyArray", historyArray);
+    historyObject.historyArray.push(city);
+    console.log(historyObject);
+    localStorage.setItem("historyObject", JSON.stringify(historyObject));
     localStorage.setItem("lastCity", cityStr);
 });
 
