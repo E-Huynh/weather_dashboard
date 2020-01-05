@@ -15,9 +15,15 @@ var d2humidity = 0;
 var d3humidity = 0;
 var d4humidity = 0;
 var d5humidity = 0;
+var d1description = "";
+var d2description = "";
+var d3description = "";
+var d4description = "";
+var d5description = "";
 
 var tempArray = [];
 var humidityArray = [];
+var descriptionArray = [];
 
 (function init(){
     var cityStr = localStorage.getItem("lastCity");
@@ -25,6 +31,27 @@ var humidityArray = [];
     getFiveDayWeather(cityStr);
 })();
 
+$("#submitBtn").on("click", function(event){
+    event.preventDefault();
+    clearDisplayAndArrays();
+    var city = $("#location").val();
+    var cityStr = city.replace(/\ /g, '+');
+    getCurrentWeather(cityStr);
+    getFiveDayWeather(cityStr);
+    var history = $(`<button class="history" data-cityname="${city}">${city}</button><br>`);
+    $("#historyList").append(history);
+    localStorage.setItem("lastCity", cityStr);
+});
+
+$("#historyList").on("click", "button", function(event){
+    event.preventDefault();
+    clearDisplayAndArrays();
+    var city = this.dataset.cityname;
+    var cityStr = city.replace(/\ /g, '+');
+    getCurrentWeather(cityStr);
+    getFiveDayWeather(cityStr);
+    localStorage.setItem("lastCity", cityStr);
+});
 
 function getCurrentWeather(location){
     $.ajax({
@@ -63,6 +90,7 @@ function getFiveDayWeather(location){
             if(checkedTemp > d1maxTemp){
                 d1maxTemp = checkedTemp
                 d1humidity = response.list[i].main.humidity;
+                d1description = response.list[i].weather[0].main;
             } 
         }
         else if(day2 === APIday){
@@ -70,6 +98,7 @@ function getFiveDayWeather(location){
             if(checkedTemp > d2maxTemp){
                 d2maxTemp = checkedTemp
                 d2humidity = response.list[i].main.humidity;
+                d2description = response.list[i].weather[0].main;
             }   
         }
         else if(day3 === APIday){
@@ -77,6 +106,7 @@ function getFiveDayWeather(location){
             if(checkedTemp > d3maxTemp){
                 d3maxTemp = checkedTemp
                 d3humidity = response.list[i].main.humidity;
+                d3description = response.list[i].weather[0].main;
             }   
         }
         else if(day4 === APIday){
@@ -84,6 +114,7 @@ function getFiveDayWeather(location){
             if(checkedTemp > d4maxTemp){
                 d4maxTemp = checkedTemp
                 d4humidity = response.list[i].main.humidity;
+                d4description = response.list[i].weather[0].main;
             }   
         }
         else if(day5 === APIday){
@@ -91,13 +122,17 @@ function getFiveDayWeather(location){
             if(checkedTemp > d5maxTemp){
                 d5maxTemp = checkedTemp
                 d5humidity = response.list[i].main.humidity;
+                d5description = response.list[i].weather[0].main;
             }   
         }
     })
     tempArray.push(d1maxTemp, d2maxTemp, d3maxTemp, d4maxTemp, d5maxTemp);
     humidityArray.push(d1humidity, d2humidity, d3humidity, d4humidity, d5humidity);
+    descriptionArray.push(d1description, d2description, d3description, d4description, d5description);
     console.log(tempArray);
     console.log(humidityArray);
+    console.log(descriptionArray);
+    // getWeatherImage(Argument Here Plz);
     for( i=0; i<tempArray.length; i++){
         var forcast = $(`<div class="forcast">
             <div>${fiveDayArray[i]}</div>
@@ -109,30 +144,6 @@ function getFiveDayWeather(location){
     }
   });
 };
-
-
-
-$("#submitBtn").on("click", function(event){
-    event.preventDefault();
-    clearDisplayAndArrays();
-    var city = $("#location").val();
-    var cityStr = city.replace(/\ /g, '+');
-    getCurrentWeather(cityStr);
-    getFiveDayWeather(cityStr);
-    var history = $(`<button class="history" data-cityname="${city}">${city}</button><br>`);
-    $("#historyList").append(history);
-    localStorage.setItem("lastCity", cityStr);
-});
-
-$("#historyList").on("click", "button", function(event){
-    event.preventDefault();
-    clearDisplayAndArrays();
-    var city = this.dataset.cityname;
-    var cityStr = city.replace(/\ /g, '+');
-    getCurrentWeather(cityStr);
-    getFiveDayWeather(cityStr);
-    localStorage.setItem("lastCity", cityStr);
-});
 
 //Constructor function
 function CurrentWeatherDisplay(obj){
@@ -155,3 +166,7 @@ function clearDisplayAndArrays(){
     tempArray = [];
     humidityArray = [];
 }
+
+function getWeatherImage(description){
+
+};
