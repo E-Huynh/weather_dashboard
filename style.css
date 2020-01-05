@@ -2,7 +2,21 @@
     padding:0;
     margin: 0;
     /* border: 1px red solid; */
+    box-sizing: border-box;
 }
+
+header{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+header #title{
+    font-size: 3rem;
+    color: white;
+}
+
 
 .container{
     display: flex;
@@ -13,6 +27,24 @@
 .cityList{
     width: 20%;
     background: rgb(216, 214, 214);
+    padding: 10px;
+}
+
+.cityList input{
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding:5px;
+    width: 80%;
+}
+
+.cityList button{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    border: 1px grey solid;
+    font-size: 0.8rem;
 }
 
 #displayContainer{
@@ -23,6 +55,9 @@
 
 #mainDisplay{
     margin: 10px;
+}
+
+#current{
     border: 1px solid grey;
     border-radius: 5px;
 }

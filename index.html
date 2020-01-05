@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/b2aeb7ceb8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css"/>
     <title>Weather Dashboard</title>
 </head>
 <body>
+    <header>
+        <div id="title">
+            Weather Dashboard
+        </div>
+    </header>
     <div class="container">
         <div class="cityList">
-            City
+            Search for a city: <br>
             <input type="text" id="location"/>
-            <button id="submitBtn">Submit</button>
+            <button id="submitBtn"><i class="fas fa-search"></i></button>
         </div>
         <div id="displayContainer">
-            <div id="mainDisplay">maindisplay</div>
-            <div id="forcastDisplay">forast display</div>    
+            <div id="mainDisplay"></div>
+            <div id="forcastDisplay"></div>    
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
