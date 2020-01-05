@@ -4,6 +4,7 @@ var day2 = moment().add(2, 'day').format('YYYY-MM-DD');
 var day3 = moment().add(3, 'day').format('YYYY-MM-DD');
 var day4 = moment().add(4, 'day').format('YYYY-MM-DD');
 var day5 = moment().add(5, 'day').format('YYYY-MM-DD');
+var fiveDayArray = [day1, day2, day3, day4, day5];
 var d1maxTemp = 0;
 var d2maxTemp = 0;
 var d3maxTemp = 0;
@@ -15,7 +16,6 @@ var d3humidity = 0;
 var d4humidity = 0;
 var d5humidity = 0;
 
-var m = moment()
 var tempArray = [];
 var humidityArray = [];
 
@@ -93,22 +93,25 @@ function getFiveDayWeather(location){
     console.log(humidityArray);
     for( i=0; i<tempArray.length; i++){
         var forcast = $(`<div class="forcast">
-            <p>Date</p>
+            <p>${fiveDayArray[i]}</p>
             <p>img</p>
             <p>${tempArray[i]}</p>
             <p>${humidityArray[i]}</p>
         </div>`);
         $("#forcastDisplay").append(forcast);
     }
-    
   });
 };
 
 $("#submitBtn").on("click", function(event){
     event.preventDefault();
+    $("#forcastDisplay").empty();
+    $("#mainDisplay").empty();
+    tempArray = [];
+    humidityArray = [];
     var city = $("#location").val();
     var cityStr = city.replace(/\ /g, '+');
-    // getCurrentWeather(cityStr);
+    getCurrentWeather(cityStr);
     getFiveDayWeather(cityStr);
 });
 
