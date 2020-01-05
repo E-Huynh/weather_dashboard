@@ -8,7 +8,6 @@ var fiveDayArray = [day1, day2, day3, day4, day5];
 var d1maxTemp, d2maxTemp, d3maxTemp, d4maxTemp, d5maxTemp;
 var d1humidity, d2humidity, d3humidity, d4humidity, d5humidity;
 var d1description, d2description, d3description, d4description, d5description;
-
 var tempArray = [];
 var humidityArray = [];
 var descriptionArray = [];
@@ -43,22 +42,18 @@ $("#historyList").on("click", "button", function(event){
 
 function getCurrentWeather(location){
     $.ajax({
-        //Change this back to dynamic at the end
     url: `http://api.openweathermap.org/data/2.5/weather?q=${location}&mode=JSON&units=imperial&APPID=9c5c1b3cee6e10229e2b0a0786d075e1`,
     method: "GET"
   }).then(function(response) {
       //set API data to an object
-      console.log(response);
-      console.log(response.weather[0].main);
       var image = getWeatherImage(response.weather[0].main);
-      console.log(image);
       var currentWeather = {
         City: response.name,
-        Temperature: response.main.temp,
+        Temperature: response.main.temp +"°F",
         Description: image,
-        High: response.main.temp_max +"F",
-        Low: response.main.temp_min,
-        Humidity: response.main.humidity,
+        High: response.main.temp_max +"°F",
+        Low: response.main.temp_min +"°F",
+        Humidity: response.main.humidity +"%",
       }
       new CurrentWeatherDisplay(currentWeather);
   });
@@ -66,17 +61,12 @@ function getCurrentWeather(location){
 
 function getFiveDayWeather(location){
     $.ajax({
-        //Change this back to dynamic at the end
     url: `http://api.openweathermap.org/data/2.5/forecast?q=${location}&mode=JSON&units=imperial&appid=9c5c1b3cee6e10229e2b0a0786d075e1`,
     method: "GET"
   }).then(function(response) {
     //set API data to an object
-    // console.log(response);
-
     response.list.forEach( function(e, i){
         var APIday = response.list[i].dt_txt.substr(0,10)
-
-
         if(day1 === APIday){
             var checkedTemp = response.list[i].main.temp;
             if(checkedTemp > d1maxTemp || undefined === d1maxTemp){
@@ -121,9 +111,6 @@ function getFiveDayWeather(location){
     tempArray.push(d1maxTemp, d2maxTemp, d3maxTemp, d4maxTemp, d5maxTemp);
     humidityArray.push(d1humidity, d2humidity, d3humidity, d4humidity, d5humidity);
     descriptionArray.push(d1description, d2description, d3description, d4description, d5description);
-    console.log(tempArray);
-    console.log(humidityArray);
-    console.log(descriptionArray);
     for( i=0; i<tempArray.length; i++){
         var image = getWeatherImage(i);
         var forcast = $(`<div class="forcast">
@@ -175,6 +162,6 @@ function getWeatherImage(i){
         return `<i class="far fa-snowflake"></i>`;
     }
     else {
-        return 'Error No Image Displayed';
+        return i;
     }
 };
