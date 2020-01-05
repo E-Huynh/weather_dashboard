@@ -132,11 +132,11 @@ function getFiveDayWeather(location){
     console.log(tempArray);
     console.log(humidityArray);
     console.log(descriptionArray);
-    // getWeatherImage(Argument Here Plz);
     for( i=0; i<tempArray.length; i++){
+        var image = getWeatherImage(i);
         var forcast = $(`<div class="forcast">
             <div>${fiveDayArray[i]}</div>
-            <div>img</div>
+            <div>${image}</div>
             <div>High: ${tempArray[i]}°F</div>
             <div>Humidity: ${humidityArray[i]}%</div>
         </div>`);
@@ -165,8 +165,23 @@ function clearDisplayAndArrays(){
     $("#mainDisplay").empty();
     tempArray = [];
     humidityArray = [];
+    descriptionArray = [];
 }
 
-function getWeatherImage(description){
-
+function getWeatherImage(i){
+    if(descriptionArray[i] === "Clouds"){
+        return `<i class="fas fa-cloud-sun"></i>`;
+    }
+    else if(descriptionArray[i] === "Clear"){
+        return `<i class="fas fa-sun"></i>`;
+    }
+    else if(descriptionArray[i] === "Rain"){
+        return `<i class="fas fa-cloud-rain"></i>`;
+    }
+    else if(descriptionArray[i] === "Snow"){
+        return `<i class="far fa-snowflake"></i>`;
+    }
+    else {
+        return "No img displayed";
+    }
 };
