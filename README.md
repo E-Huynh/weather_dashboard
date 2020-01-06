@@ -22,3 +22,7 @@ The weather dashboard also stores your history on the side bar. No more having t
   * [Font Awesome](https://fontawesome.com/)
   * Flexbox layout
   
+### Known Bugs
+---
+  * On intial page load, leaving the search blank and searching adds an empty button to the history.
+  * A history button will populate for the same city if character case doesn't match.
