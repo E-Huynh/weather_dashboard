@@ -5,7 +5,7 @@ Have you ever had the weather ruin plans for a BBQ? Do you travel constantly and
 
 ## Functionality
 ---
-The weather dashboard allows you to search the weather in any city. The current weather in that city will display useful information such as: Date, temp, description, high & low, and humidity. Also displayed is a five day forecast, so that you can plan ahead. The five day forecast displays the follow: Date, description, high, and humidity.
+The weather dashboard allows you to search the weather in any city. The current weather in that city will display useful information such as: Date, temp, description, high & low, wind speed, and humidity. Also displayed is a five day forecast, so that you can plan ahead. The five day forecast displays the follow: Date, description, high, and humidity.
 
 The weather dashboard also stores your history on the side bar. No more having to retype the city every time. Just click the button and the weather for that city will be displayed. Additionally, the last city searched will automatically be populated, so no more searching for your hometown.
 
@@ -22,7 +22,8 @@ The weather dashboard also stores your history on the side bar. No more having t
   * [Font Awesome](https://fontawesome.com/)
   * Flexbox layout
   
-### Known Bugs
+### Known Bugs/ Other Features
 ---
   * On intial page load, leaving the search blank and searching adds an empty button to the history.
   * A history button will populate for the same city if character case doesn't match.
+  * Need to add UV index to the current day.
