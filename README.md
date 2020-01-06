@@ -1,138 +1,28 @@
-# Unit 06 Server-Side APIs Homework: Weather Dashboard
+# Weather Dashboard
+---
+## Purpose
+Have you ever had the weather ruin plans for a BBQ? Do you travel constantly and need to know what kind of clothes to pack? Do you want to avoid terrible drivers on the road? All these issue can be avoided by checking the **Weather Dashboard**. No more BBQ in the rain, no more bringing a swimsuit when it snows, and no more fender benders because a truck thought its 4wd would help it stop going 80 in a blizzard.
 
-Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. In this homework assignment, your challenge is to build a weather dashboard using the OpenWeather API.
+## Functionality
+---
+The weather dashboard allows you to search the weather in any city. The current weather in that city will display useful information such as: Date, temp, description, high & low, and humidity. Also displayed is a five day forecast, so that you can plan ahead. The five day forecast displays the follow: Date, description, high, and humidity.
 
+The weather dashboard also stores your history on the side bar. No more having to retype the city every time. Just click the button and the weather for that city will be displayed. Additionally, the last city searched will automatically be populated, so no more searching for your hometown.
 
-## Instructions
+## Images
+---
+![Initial page](https://lh3.googleusercontent.com/UiPk8OqxAjc43O0BrRyFMiehsk2WvICrD10LDyg1hn_gyI7awlxsmhHyL6lmZsE2EuzbMuus6YfyV0jo862qQ_i3T23-TE8LeP67kw7IDvNBFBIGJ7MfEFfadCTKc2pMxAYimgh5HNDCLGND5w6LsqFuX3jXJK_2wWR2qUhz6cXhZfZmJ4YvWL8ZgiEYQ7u7luUCCiq1MoBFApFYe0w-nLQmggmZckB8XRDmk3YBHrfkLrhp9rtbbJHA0fZulk5pU4EZIE8FNJf4YELmX1pnFaTiVXdel7Y4JuSzUDwe3XD3jQc-A-WFBL_MU2BfjbCoT45ZsMNX08KT8D3k1Xn_sUgpuVqS35xJPLxqqGPlMzTO96hw2wOPSompNTrGIWkEvScsstqRtJ1aar6pCDo2xi0XA-vS-XSOpGYFGsdI8a_aIRWhPCowjXZgkC4QMwts_dGCDDYbS-2F8QK-bcizXHb0JhUy0pwQ6jaX1VtC3_xrnJwQt9hp7TZPlUJChigcIPpYLG1_k6NqKhMqp3jiKTRb6YcpOKcFLFLm_mVADhYRqNIf9pOkg9ujfY2bDX86G3htm_mblQICO3qUUae8pBJxyBok3QeV7OBz07cDvz_JzufbI-b1D83OSWBtMtM4ErEcQHpAcx0io_96QTHjvmhzdcZfolADBz_ApIiFfrxCIoFMy_VcUrMz=w2768-h1074-no)
+![Searching for a city](https://lh3.googleusercontent.com/2MLvjMplrnyeO3eiIu9VYTMkNfbUv5GkvMDyRiGQj2gyimVqN2oOsSzaiEuAYmatJullERAcSZ57umJ0SRj02ci1WHDIHmkrfSuwyrpYaT-7H98np7t87sPYz_C9NRic3IUgDGELjrz4dLcczFLel1G3WFGWyUZp3R5jOjmqjk1KFrV9ayZsIE1gToz2ZEtVhz2tN1hI8-09j8XCfZTt9B0zFJ4J-kx8LW9MNah2EY7-90NtaFs-6dlo-yeInVbrcxBIfdoIa4fqeirytLd2BBAQkNPSJTmBWHZNux6nE3wEndMJboQUDxwjy6_9_i_YN-ol_IWa1C8UQoTwNjVCY2ijnEsh-NDHwqPuVBZY27vjphg8X9n9dNzcOzkC73eTW-dJYdPqLpM0pRG0QdgUIT2h0OH0YzBRQbQtA07RbBpWSjSndboLdqDsPhcZXT50c-YCfjKI-tv11T9UW0BzJim3CKofKM0QC2OuCy4FY3R5_kJWkJvCTW06pwY-fYFnNPmKFPORdtyV0oco2vwHeMSuCiDa5XK6YqA8GRpxmFzVS5Pl06d5LUy6KbPSvIcTKJtXVf9-FGa-X6LYUET2tmVxTTys7T0sHn1ruFV9yf2vsrQFHAicC2IrNwhZPqxF27Kf5bFEjjMPCixsxrYClGlLh1n0-HRME_9YKEsWXJGL48ZCG9TglDh0=w2766-h886-no)
+![Displayed search history](https://lh3.googleusercontent.com/boisRezOUszKjt-vvIdmqeFHBY9HE4SDnx46qbahDH8y1TUxmXJN9Ddqbwn5W0mgB3naPr4MNaw063G395lV96NnwGUgNkZzKcWo_LCYnbpwwIa75Y6IVXowG8Luc-YMu3lZVQtTcJnn2xPNkJeviGskry0ia5_byI3a-Rd3Clpg___ybmeaDcupBfUp1LTUWsYZjGdWyzNWw0-ADHEzZwfvN1KY7ly5hZNcvS-6gAqt6ixB6f8TPjZUUdmQiCSLIQ62a6hpkhyTHKGC5dfryYtXs1hhrR0zEWOgYP44__nDkQ288hky3WVAq1QPL8kQqdzfN22RlSGluV2IJMJ7sUlkXNqOpF4wydIfejooXn11uQA0ZYJCu1Stl7JWU4zqz-iTvw1YsMZTqOWDAQw4sQ0Ub9N1tDfzprfD3tWZ8Bm7XAQB00wxr0KGUkm_tnRMY_GtzXGVPmOIGEDqURWhwuG6mP4BkhtPcuP9RvGi5qJUkp_R4IVGENZfMsGioHgVH5i7zc3-PSHGqVcyKZijfWsI0XLTCln9FSL8EiY9_alONRswgrEc2K2ukay9ti3vm4MX2IQ5ANrzCpkH7NDYcVXHg2oHnyi1Sx39lI0Ann3H4-T3CfXsYVbmmpymWNfSOBPXnPa2FbpR1x0SL9y8t59SEUlhhXETDVb69Tv9fflfHFfimIvM9G72=w2766-h896-no)
 
-Build a weather dashboard application with search functionality to find current weather conditions and the future weather outlook for multiple cities. Following the [common templates for user stories](https://en.wikipedia.org/wiki/User_story#Common_templates), we can frame this challenge as follows:
-
-```
-As a traveler
-I want to see the weather outlook for multiple cities
-so that I can plan a trip accordingly
-```
-
-How do you deliver this? Here are some guidelines:
-
-* Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions.
-
-* Use AJAX to hook into the API to retrieve data in JSON format.
-
-* Your app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
-
-* Display the following under current weather conditions:
-
-  * City
-
-  * Date
-
-  * Icon image (visual representation of weather conditions)
-
-  * Temperature
-
-  * Humidity
-
-  * Wind speed
-
-  * UV index
-
-* Include a search history so that users can access their past search terms. Clicking on the city name should perform a new search that returns current and future conditions for that city. 
-
-* Include a 5-Day Forecast below the current weather conditions. Each day for the 5-Day Forecast should display the following:
-
-  * Date
-
-  * Icon image (visual representation of weather conditions)
-
-  * Temperature
-
-  * Humidity
-
-![weather dashboard](./Assets/06-Server-Side-APIs-homework-demo.png)
-
-
-### Hints
-
-* Create multiple functions within your application to handle the different parts of the dashboard:
-
-  * Current conditions
+### Technologies
+---
+  * HTML, CSS, Jquery, Ajax, Moment.js
+  * [OpenWeather API](https://openweathermap.org/)
+  * [Font Awesome](https://fontawesome.com/)
+  * Flexbox layout
   
-  * 5-Day Forecast
-  
-  * Search history
-
-  * UV index
-
-* You will need to make more than one AJAX call.
-
-* You will need to hardcode some of the parameters in the API's URL. User input will determine some of the other parameters.
-
-* Use `localStorage` to store any persistent data.
-
-
-## Minimum Requirements
-
-* Functional, deployed application.
-
-* GitHub repository with a unique name and a README describing the project.
-
-* User can search for weather reports by city using the openweathermap API.
-
-* After searching for a city, the following information is displayed:
-
-  *  Current temperature
-
-  *  Current humidity
-
-  *  Windspeed
-
-  *  Uv index
-
-  *  5 day forecast
-
-* Application uses icons to represent weather conditions.
-
-* Application stores previously searched for cities in localstorage and displays them to the user.
-
-* Application loads last searched city forecast on page load.
-
-## Bonus
-
-* Use the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API) to add the user's current location to the initial landing page.
-
-* Add the application to your portfolio.
-
-
-## Commit Early and Often
-
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
-
-* Your commit history is a signal to employers that you are actively working on projects and learning new skills.
-
-* Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
-
-Follow these guidelines for committing:
-
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
-
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
-
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
-
-* Test your application before you commit to ensure functionality at every step in the development process.
-
-We would like you to have well over 200 commits by graduation, so commit early and often!
-
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository
-
-
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+### Known Bugs
+---
+  * On intial page load, leaving the search blank and searching adds an empty button to the history.
+  * A history button will populate for the same city if character case doesn't match.
