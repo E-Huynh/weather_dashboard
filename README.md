@@ -27,3 +27,4 @@ The weather dashboard also stores your history on the side bar. No more having t
   * On intial page load, leaving the search blank and searching adds an empty button to the history.
   * A history button will populate for the same city if character case doesn't match.
   * Need to add UV index to the current day.
+  * Set better breakpoints for responsiveness.
