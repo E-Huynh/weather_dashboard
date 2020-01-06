@@ -39,6 +39,12 @@ $("#submitBtn").on("click", function(event){
     var cityStr = city.replace(/\ /g, '+');
     getCurrentWeather(cityStr);
     getFiveDayWeather(cityStr);
+    for( var i = 0; i < historyObject.historyArray.length; i++){
+        if(historyObject.historyArray[i] === city || city === ""){
+            console.log("Error: Already in history or empty str");
+            return;
+        }
+    }
     var history = $(`<button class="history" data-cityname="${city}">${city}</button><br>`);
     $("#historyList").append(history);
     historyObject.historyArray.push(city);
