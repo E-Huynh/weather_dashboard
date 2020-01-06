@@ -76,6 +76,7 @@ function getCurrentWeather(location){
         Description: image,
         High: response.main.temp_max +"°F",
         Low: response.main.temp_min +"°F",
+        'Wind Speed': response.wind.speed +"MPH",
         Humidity: response.main.humidity +"%",
       }
       new CurrentWeatherDisplay(currentWeather);
