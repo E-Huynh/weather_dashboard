@@ -20,7 +20,7 @@ The weather dashboard allows you to search the weather in any city. The current 
 The weather dashboard also stores your history on the side bar. No more having to retype the city every time. Just click the button and the weather for that city will be displayed. Additionally, the last city searched will automatically be populated, so no more searching for your hometown.
 
 ## Technologies
-  * HTML, CSS, Flexbox, Jquery, Ajax
+  * HTML, CSS, Flexbox, Jquery, Ajax, LocalStorage
   * [Moment.js](https://momentjs.com/)
   * [OpenWeather API](https://openweathermap.org/)
   * [Font Awesome](https://fontawesome.com/)
