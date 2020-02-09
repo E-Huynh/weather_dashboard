@@ -32,7 +32,7 @@ The weather dashboard also stores your history on the side bar. No more having t
   * Set better breakpoints for responsiveness.
   
 ## Images
-![Initial page]()
-![Searching for a city]()
-![Displayed search history]()
+![Initial page](https://github.com/E-Huynh/weather_dashboard/blob/master/Assets/initial.png)
+![Searching for a city](https://github.com/E-Huynh/weather_dashboard/blob/master/Assets/searching.png)
+![Displayed search history](https://github.com/E-Huynh/weather_dashboard/blob/master/Assets/history.png)
 
