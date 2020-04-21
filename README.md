@@ -9,7 +9,7 @@ Erik.W.Huynh@Gmail.com
 
 [LinkedIn](https://www.linkedin.com/in/erik-huynh-228321196/)
 
-[Portfolio](https://e-huynh.github.io/updated_portfolio/)
+[Portfolio](https://e-huynh.github.io/portfolio-gram/)
 
 ## Purpose
 Have you ever had the weather ruin plans for a BBQ? Do you travel constantly and need to know what kind of clothes to pack? Do you want to avoid terrible drivers on the road? All these issue can be avoided by checking the **Weather Dashboard**. No more BBQ in the rain, no more bringing a swimsuit when it snows, and no more fender benders because a truck thought its 4wd would help it stop going 80 in a blizzard.
